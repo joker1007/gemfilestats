@@ -85,6 +85,8 @@ Spork.prefork do
     config.after(:each) do
       DatabaseCleaner.clean
     end
+
+    config.include Mongoid::Matchers
   end
 
   ActiveSupport::Dependencies.clear
