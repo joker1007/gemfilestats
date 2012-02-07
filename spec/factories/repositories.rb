@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :repository do
-      name "MyString"
-      url "MyString"
-    end
+    url "https://github.com/joker1007/pasokara_player3"
+    username "joker1007"
+    name "pasokara_player3"
+  end
 end
