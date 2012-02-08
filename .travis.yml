@@ -1,0 +1,12 @@
+bundler_args: "--without development"
+script: "bundle exec rspec spec; export DISPLAY=:99.0 && bundle exec cucumber features"
+before_script:
+  - "sh -e /etc/init.d/xvfb start"
+  - "cp .rspec.example .rspec"
+  - "cp config/mongoid.example.yml config/mongoid.yml"
+rvm:
+  - 1.9.2
+  - 1.9.3
+notifications:
+  email:
+    on_success: never
