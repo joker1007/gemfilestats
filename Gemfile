@@ -54,6 +54,7 @@ gem "haml-rails"
 gem "database_cleaner", :group => [:test]
 gem "rb-fsevent"
 gem "growl"
+gem "tapp"
 
 group :test do
   gem "guard-spork"
@@ -66,4 +67,6 @@ gem "mongoid", ">= 2.4.3"
 gem "mongoid-rspec", ">= 1.4.4"
 gem "bson_ext"
 
-gem "pry-rails", :group => [:development]
+gem "pry-rails", :group => [:development, :test]
+
+gem "ruby_parser"

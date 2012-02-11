@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :gemfile do
-      body "MyString"
-    end
+    body { File.read(File.join(Rails.root, "spec", "Gemfile")) }
+    repository
+  end
 end
