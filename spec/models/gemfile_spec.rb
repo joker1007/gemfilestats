@@ -11,7 +11,7 @@ describe Gemfile do
     it "should get sources & create used_gem" do
       subject.get_used_gems
       subject.sources.should eq(["https://rubygems.org"])
-      subject.repository.used_gems.should have(7).items
+      subject.repository.used_gems.should have(8).items
     end
 
     it "should get used_gem group & version" do
@@ -22,6 +22,7 @@ describe Gemfile do
         {name: 'coffee-rails', version: '~> 3.2.1', group: [:assets]},
         {name: 'uglifier', version: '>= 1.0.3', group: [:assets]},
         {name: 'jquery-rails'},
+        {name: 'ruby-debug19', group: [:test]},
         {name: 'rspec', version: '>= 2.5.0', group: [:test, :development]},
         {name: 'guard-spork', group: [:test]},
       ].each do |params|
