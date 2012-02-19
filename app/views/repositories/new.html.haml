@@ -1,0 +1,11 @@
+#add_repository
+  %h1 Add Github repository
+  %p Repository has Gemfile in Root
+
+  = render 'form'
+
+#recent_repositories
+  %h1 Recent 20 Repositories
+  %ul#repositories
+    - @repositories.each do |repository|
+      %li[repository]= link_to repository.name, repository
