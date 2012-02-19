@@ -1,0 +1,35 @@
+#add_repository {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.new_repository, .edit_repository {
+  .field {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    input[type="text"] {
+      font-size: 20px;
+      height: 24px;
+      width: 420px;
+      margin-right: 10px;
+    }
+    .btn-primary {
+      font-size: 20px;
+      width: 6em;
+    }
+  }
+}
+
+#recent_repositories {
+  margin-top: 120px;
+  border: 1px solid #DDD;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+#repositories {
+  margin-top: 20px;
+  font-size: 20px;
+}

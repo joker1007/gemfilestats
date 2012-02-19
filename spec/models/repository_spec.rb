@@ -8,8 +8,10 @@ describe Repository do
   it { should have_many(:used_gems) }
 
   it { should validate_presence_of(:url) }
+  it { should validate_uniqueness_of(:url) }
   it { should validate_presence_of(:username) }
   it { should validate_presence_of(:name) }
+  it { should validate_format_of(:url).to_allow("http://github.com/hogeuser/hogerepo").not_to_allow("http://other.com/hogeuser/hogerepo") }
 
   it { should be_timestamped_document }
 
@@ -37,11 +39,21 @@ describe Repository do
   end
 
   describe "#async_get_gemfile_and_used_gems" do
-    subject { FactoryGirl.create(:repository) }
+    subject { FactoryGirl.build(:repository) }
 
     it "should receive Resque.enqueue(Job::GetUsedGemsJob, {repository's id})" do
       Resque.should_receive(:enqueue).with(Job::GetUsedGemsJob, subject.id)
       subject.async_get_gemfile_and_used_gems
+    end
+  end
+
+  describe ".recent(n)" do
+    before do
+      FactoryGirl.create_list(:repository_seq, 10)
+    end
+
+    it "should return recent created n records" do
+      Repository.recent(5).map{|repo| repo.name}.should eq(%w{repo10 repo9 repo8 repo7 repo6})
     end
   end
 end
