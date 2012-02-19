@@ -71,5 +71,5 @@ gem "pry-rails", :group => [:development, :test]
 
 gem "ruby_parser"
 gem "resque"
-
+gem "kaminari"
 gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'

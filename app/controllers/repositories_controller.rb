@@ -25,7 +25,7 @@ class RepositoriesController < ApplicationController
   # GET /repositories/new.json
   def new
     @repository = Repository.new
-    @repositories = Repository.recent(20)
+    @repositories = Repository.recent.page(params[:page]).per(20)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,9 +45,10 @@ class RepositoriesController < ApplicationController
 
     respond_to do |format|
       if @repository.save
-        format.html { redirect_to @repository, notice: 'Repository was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Repository was successfully created.' }
         format.json { render json: @repository, status: :created, location: @repository }
       else
+        @repositories = Repository.recent.page(params[:page]).per(20)
         format.html { render action: "new" }
         format.json { render json: @repository.errors, status: :unprocessable_entity }
       end
@@ -61,9 +62,10 @@ class RepositoriesController < ApplicationController
 
     respond_to do |format|
       if @repository.update_attributes(params[:repository])
-        format.html { redirect_to @repository, notice: 'Repository was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Repository was successfully updated.' }
         format.json { head :no_content }
       else
+        @repositories = Repository.recent.page(params[:page]).per(20)
         format.html { render action: "edit" }
         format.json { render json: @repository.errors, status: :unprocessable_entity }
       end

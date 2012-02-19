@@ -8,4 +8,5 @@
   %h1 Recent 20 Repositories
   %ul#repositories
     - @repositories.each do |repository|
-      %li[repository]= link_to repository.name, repository
+      %li[repository]= link_to repository.username + "/" + repository.name, repository
+  = paginate @repositories

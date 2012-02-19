@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Repository do
+  subject { FactoryGirl.build(:repository) }
   it { should have_field(:url).of_type(String).with_default_value_of(false) }
   it { should have_field(:username).of_type(String).with_default_value_of(false) }
   it { should have_field(:name).of_type(String).with_default_value_of(false) }
@@ -14,6 +15,8 @@ describe Repository do
   it { should validate_format_of(:url).to_allow("http://github.com/hogeuser/hogerepo").not_to_allow("http://other.com/hogeuser/hogerepo") }
 
   it { should be_timestamped_document }
+
+  its(:user_url) {should eq("https://github.com/joker1007")}
 
   context "when saved" do
     subject {
@@ -47,13 +50,13 @@ describe Repository do
     end
   end
 
-  describe ".recent(n)" do
+  describe ".recent" do
     before do
-      FactoryGirl.create_list(:repository_seq, 10)
+      FactoryGirl.create_list(:repository_seq, 5)
     end
 
     it "should return recent created n records" do
-      Repository.recent(5).map{|repo| repo.name}.should eq(%w{repo10 repo9 repo8 repo7 repo6})
+      Repository.recent.map{|repo| repo.name}.should eq(%w{repo5 repo4 repo3 repo2 repo1})
     end
   end
 end
