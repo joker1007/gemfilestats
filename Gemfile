@@ -54,13 +54,19 @@ gem "haml-rails"
 gem "database_cleaner", :group => [:test]
 gem "rb-fsevent"
 gem "growl"
-gem "guard-spork", :group => [:test]
-gem "guard-rspec", :group => [:test]
-gem "guard-cucumber", :group => [:test]
-gem "turn", :require => false, :group => [:test]
+gem "tapp"
+
+group :test do
+  gem "guard-spork"
+  gem "guard-rspec"
+  gem "guard-cucumber"
+  gem "turn", :require => false
+end
 
 gem "mongoid", ">= 2.4.3"
 gem "mongoid-rspec", ">= 1.4.4"
 gem "bson_ext"
 
-gem "pry-rails", :group => [:development]
+gem "pry-rails", :group => [:development, :test]
+
+gem "ruby_parser"
