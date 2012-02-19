@@ -14,6 +14,11 @@ class Gemfile
           sources.push(params[:url])
         when :gem
           params.delete(:type)
+          params.delete(:require)
+          if params[:group].class == String || params[:group].class == Symbol
+            group = params[:group]
+            params[:group] = [group]
+          end
           repository.used_gems.create(params)
         end
       end

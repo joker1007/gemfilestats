@@ -71,7 +71,7 @@ module GemfileParser
 
     def iter_parse(sexp, block_group = nil)
       sexp_body = sexp.sexp_body
-      method, block_group = default_group = parse(sexp_body[0])
+      method, block_group = parse(sexp_body[0])
       result = nil
       if method == :group
         result = parse(sexp_body[2], block_group)
