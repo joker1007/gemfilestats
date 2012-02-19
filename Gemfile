@@ -70,3 +70,4 @@ gem "bson_ext"
 gem "pry-rails", :group => [:development, :test]
 
 gem "ruby_parser"
+gem "resque"

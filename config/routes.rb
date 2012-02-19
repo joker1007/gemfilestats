@@ -1,4 +1,8 @@
+require "resque/server"
+
 Gemfilestats::Application.routes.draw do
+  mount Resque::Server.new, :at => "/resque"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

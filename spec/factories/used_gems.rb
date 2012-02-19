@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :used_gem do
-      name "MyString"
-      url "MyString"
-      author "MyString"
+      name "rails"
+      url nil
+      author nil
     end
 end

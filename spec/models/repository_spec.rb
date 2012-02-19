@@ -35,4 +35,13 @@ describe Repository do
       subject.gemfile.should_not be_nil
     end
   end
+
+  describe "#async_get_gemfile_and_used_gems" do
+    subject { FactoryGirl.create(:repository) }
+
+    it "should receive Resque.enqueue(Job::GetUsedGemsJob, {repository's id})" do
+      Resque.should_receive(:enqueue).with(Job::GetUsedGemsJob, subject.id)
+      subject.async_get_gemfile_and_used_gems
+    end
+  end
 end

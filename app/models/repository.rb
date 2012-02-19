@@ -24,4 +24,8 @@ class Repository
     gemfile_body = GithubUtil.get_gemfile_body(self)
     self.create_gemfile({:body => gemfile_body})
   end
+
+  def async_get_gemfile_and_used_gems
+    Resque.enqueue(Job::GetUsedGemsJob, self.id)
+  end
 end
