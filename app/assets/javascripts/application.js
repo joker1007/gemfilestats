@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require google-code-prettify/distrib/google-code-prettify/prettify
 //= require twitter/bootstrap
 //= require_tree .

@@ -27,7 +27,11 @@ class Repository
     record.async_get_gemfile_and_used_gems
   end
 
-  scope :recent, lambda {|n| order_by([[:created_at, :desc]]).limit(n)}
+  scope :recent, order_by([[:created_at, :desc]])
+
+  def user_url
+    "https://github.com/#{self.username}"
+  end
 
   def get_gemfile
     gemfile_body = GithubUtil.get_gemfile_body(self)

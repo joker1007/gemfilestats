@@ -1,9 +1,31 @@
+- content_for(:title) do
+  #{@repository.username}/#{@repository.name} Gemfile
 %p#notice= notice
 
 %p
-  %b Url:
-  = @repository.url
+  %span.label
+    URL:
+  %span.value
+    = link_to @repository.url, @repository.url
+%p
+  %span.label
+    USER:
+  %span.value
+    = link_to @repository.username, @repository.user_url
+%p
+  %span.label
+    NAME:
+  %span.value
+    = @repository.name
 
-= link_to 'Edit', edit_repository_path(@repository)
-\|
-= link_to 'Back', repositories_path
+#repository_gemfile
+  .fb-like{:data => {:href => request.url, :send => "false", :layout => "box_count", :width => "450"}}
+  %h2 Gemfile
+  %pre.prettyprint.lang-rb
+    = raw @repository.gemfile.body.gsub(/\n/, "<br>")
+
+- content_for(:post_javascript) do
+  :javascript
+    $(function() {
+      prettyPrint();
+    });

@@ -81,7 +81,7 @@ describe RepositoriesController do
 
       it "redirects to the created repository" do
         post :create, {:repository => valid_attributes}, valid_session
-        response.should redirect_to(Repository.last)
+        response.should redirect_to(root_path)
       end
     end
 
@@ -123,7 +123,7 @@ describe RepositoriesController do
       it "redirects to the repository" do
         repository = Repository.create! valid_attributes
         put :update, {:id => repository.to_param, :repository => valid_attributes}, valid_session
-        response.should redirect_to(repository)
+        response.should redirect_to(root_path)
       end
     end
 
