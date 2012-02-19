@@ -4,6 +4,7 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "cp .rspec.example .rspec"
   - "cp config/mongoid.example.yml config/mongoid.yml"
+  - "cp config/resque.example.yml config/resque.yml"
 rvm:
   - 1.9.2
   - 1.9.3
