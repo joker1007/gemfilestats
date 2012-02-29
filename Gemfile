@@ -34,7 +34,7 @@ gem 'unicorn'
 gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem "rails3-generators"
 gem "i18n_generators"
@@ -68,6 +68,8 @@ gem "mongoid-rspec", ">= 1.4.4"
 gem "bson_ext"
 
 gem "pry-rails", :group => [:development, :test]
+gem "pry-stack_explorer", :group => [:development, :test]
+gem "ruby-debug-pry", :require => "ruby-debug/pry", :group => [:development, :test]
 
 gem "ruby_parser"
 gem "resque"
